@@ -1,5 +1,5 @@
 # aws-terraform-cicd-java-springboot
-Terraform: AWS CICD with CodePipeline, CodeBuild, ECS and a Springboot App
+Terraform: AWS CICD with Jenkins, Sonarqube, ECS and a Springboot App
 
 The [all-in-one](https://github.com/ruanbekker/aws-terraform-cicd-java-springboot/tree/all-in-one) branch has the application code, application infrastructure and pipeline infrastructure in one repository.
 
@@ -20,7 +20,8 @@ You will be able to boot your application locally using docker-compose as well a
 - RDS Aurora postresql compatible  Instance
 - SSM Parameters for RDS Password, Hostname etc, which we will place into the Task Definition as well
 - IAM Roles, Policies and Security Groups
-
+- Amazon shield
+- cloudfront,WAF
 When I tested, terraform took `4m 24s` to deploy the infrastructure and when I made a commit to the `main` branch the pipeline took about 5 minutes to deploy.
 
 ## Deploy Local
