@@ -17,7 +17,7 @@ You will be able to boot your application locally using docker-compose as well a
 - ECS Container Instance with Userdata
 - ECS Cluster, ECS Service and ECS Task Definition with variables
 - S3 Buckets for CodePipeline and CodeBuild Cache
-- RDS MySQL Instance
+- RDS Aurora postresql compatible  Instance
 - SSM Parameters for RDS Password, Hostname etc, which we will place into the Task Definition as well
 - IAM Roles, Policies and Security Groups
 
@@ -173,11 +173,6 @@ Other variables that needs replacement resides in `infra/aws/eu-west-1/productio
 
 ```
 variable "aws_region" {}
-variable "codebuild_docker_image" {}
-variable "codebuild_security_group_name" {}
-variable "codepipeline_build_stage_name" {}
-variable "codepipeline_deploy_stage_name" {}
-variable "codepipeline_source_stage_name" {}
 variable "codestar_connection_id" {}
 variable "container_desired_count" {}
 variable "container_port" {}
@@ -244,9 +239,6 @@ $ terraform plan
   # aws_alb_listener.https will be created
   # aws_alb_target_group.service_tg will be created
   # aws_cloudwatch_log_group.ecs will be created
-  # aws_codebuild_project.build will be created
-  # aws_codepipeline.pipeline will be created
-  # aws_codepipeline_webhook.webhook will be created
   # aws_codestarconnections_connection.github will be created
   # aws_db_instance.prod will be created
   # aws_ecr_repository.repo will be created
@@ -384,7 +376,7 @@ View the application status:
     "db": {
       "status": "UP",
       "details": {
-        "database": "MySQL",
+        "database": "postgresql",
         "validationQuery": "isValid()"
       }
     },
